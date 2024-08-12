@@ -1,16 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
+/*import React from 'react';
+import ReactDOM from 'react-dom';
 import App from './App';
+import {FirebaseContext} from './store/FirebaseContext';
+import { app, auth, db, storage } from './firebase/config';
 
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+ReactDOM.render(
+<FirebaseContext.Provider value={{ app, auth, db, storage }}>
+  <App/>
+</FirebaseContext.Provider>
+, document.getElementById('root')
+); */
+
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
+import { FirebaseContext } from './store/FirebaseContext';
+import { app, auth, db, storage } from './firebase/config';
+
+// Create a root container
+const rootElement = document.getElementById('root');
+const root = createRoot(rootElement);
+
+// Render the App component with FirebaseContext provider
 root.render(
-  <React.StrictMode>
+  <FirebaseContext.Provider value={{ app, auth, db, storage }}>
     <App />
-  </React.StrictMode>
+  </FirebaseContext.Provider>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-
